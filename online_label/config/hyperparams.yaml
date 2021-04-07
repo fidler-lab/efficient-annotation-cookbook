@@ -1,0 +1,82 @@
+imagenet_split_0:
+  none:
+    lr_ratio: 0.0001
+    weight_decay: 0.005
+  pseudolabel:
+    lr_ratio: 0.0005
+    weight_decay: 0.005
+  mixmatch:
+    lr_ratio: 0.0001
+    weight_decay: 0.005
+    mu: 3
+    mixmatch_w: 50
+
+
+imagenet_split_2:
+  none:
+    lr_ratio: 0.001
+    weight_decay: 0.001
+  pseudolabel:
+    lr_ratio: 0.0005
+    weight_decay: 0.0005
+  mixmatch:
+    lr_ratio: 0.001
+    weight_decay: 0.0005
+    mu: 5
+    mixmatch_w: 100
+
+
+imagenet_split_4:
+  none:
+    lr_ratio: 0.001
+    weight_decay: 0.001
+  pseudolabel:
+    lr_ratio: 0.0001
+    weight_decay: 0.0005
+  mixmatch:
+    lr_ratio: 0.0005
+    weight_decay: 0.005
+    mu: 3
+    mixmatch_w: 150
+
+
+imagenet_animal:
+  none:
+    lr_ratio: 0.0001
+    weight_decay: 0.005
+  pseudolabel:
+    lr_ratio: 0.00005
+    weight_decay: 0.005
+  mixmatch:
+    lr_ratio: 0.001
+    weight_decay: 0.0005
+    mu: 5
+    mixmatch_w: 75
+
+
+imagenet_20_classes:
+  none:
+    lr_ratio: 0.0005
+    weight_decay: 0.0005
+  pseudolabel:
+    lr_ratio: 0.001
+    weight_decay: 0.001
+  mixmatch:
+    lr_ratio: 0.001
+    weight_decay: 0.0005
+    mu: 10
+    mixmatch_w: 150
+
+
+imagenet_100_classes:
+  none:
+    lr_ratio: 0.0005
+    weight_decay: 0.0001
+  pseudolabel:
+    lr_ratio: 0.0005
+    weight_decay: 0.0001
+  mixmatch:
+    lr_ratio: 0.0005
+    weight_decay: 0.0001
+    mu: 10
+    mixmatch_w: 50

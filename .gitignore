@@ -1,0 +1,8 @@
+data/features/byol_r50-e3b0c442.pth_feat1.npy
+
+.ipynb_checkpoints
+outputs/
+
+.DS_Store
+__pycache__
+*.pyc

@@ -1,0 +1,11 @@
+wnids: n04517823 n03085013 n02877765 n03764736 n03584829 n03787032 n02869837 n04136333 n03777754 n04493381 n04026417 n03062245 n04111531 n03594734 n03259280 n03379051
+n_classes: 16
+n_data_per_class: 2000
+n_data_distraction_per_class: 0
+n_prototype_per_class: 10
+risk_thres: 0.1
+
+online: 
+  n_hits_per_step: 5
+  budget: 400000
+  hit_size: 40

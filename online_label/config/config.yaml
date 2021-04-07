@@ -1,0 +1,52 @@
+defaults:
+  - hydra/job_logging: colorlog
+  - hydra/hydra_logging: colorlog
+  - experiment: imagenet_split_1
+  - simulation: amt_structured_noise
+  - learner_method: good_practices_semi # lean, improved_lean, good_practices_semi, online_ds
+
+
+hydra:
+  run:
+    dir: ./outputs/${now:%Y-%m-%d}-${now:%H-%M-%S}
+
+exp_name: test
+seed: 123
+n_jobs: 2
+early_stop: false
+
+aggregator: 
+  algo: bayes # mj bayes
+
+
+optimizer:
+  max_em_steps: 10
+  likelihood_epsilon: 0.001
+
+
+learner:
+  features: byol_r50-e3b0c442.pth_feat1.npy
+  risk_thres: 0.1
+  n_hidden_layer: 1
+  hidden_size: 64
+  batch_size: 1024
+  max_epochs: 300
+  lr_ratio: 0.0001
+  weight_decay: 0.001
+
+  algo: dummy
+  calibrate: temperature
+  semi_supervised: none
+  early_stop_scope: local
+  prototype_as_val: true
+
+  mixmatch:
+    mu: 5
+    alpha: 0.75
+    mixmatch_w: 75
+  
+
+sampler:
+  algo: random # random, greedy_task_assignment
+  max_annotation_per_example: 3
+  max_annotation_per_worker: 2000

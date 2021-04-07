@@ -1,0 +1,5 @@
+optimizer:
+  criterion: soft
+
+learner:
+  algo: dummy

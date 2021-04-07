@@ -1,0 +1,10 @@
+worker:
+  type: uniform_noise
+  known: false
+  n: 50
+  prior:
+    type: homegeneous_workers 
+    strength: 10
+    predefined_params:
+      pos_count: 2
+      neg_count: 1
