@@ -104,7 +104,7 @@ class NNLearner(Learner):
                 model.eval()
                 val_loss_l, _ = __eval(model, val_loader)
                 val_loss = np.mean(val_loss_l)
-                logger.debug('[Epoch {epoch}] Val Loss: {val_loss}')
+                logger.debug(f'[Epoch {epoch}] Val Loss: {val_loss}')
 
                 if val_loss < best_loss:
                     best_model.load_state_dict(deepcopy(model.state_dict()))

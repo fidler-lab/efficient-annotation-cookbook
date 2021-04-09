@@ -1,6 +1,6 @@
 # Towards Good Practices for Efficiently Annotating Large-Scale Image Classification Datasets
 
-This is the official implementation of "Towards Good Practices for Efficiently Annotating Large-Scale Image Classification Datasets" (CVPR 2021).
+This is the official implementation of *"Towards Good Practices for Efficiently Annotating Large-Scale Image Classification Datasets"* (CVPR 2021).
 For more details, please refer to:
 ----------------------- ------------------------------------
 **Towards Good Practices for Efficiently Annotating Large-Scale Image Classification Datasets**
@@ -15,14 +15,7 @@ University of Toronto
 
 ![](assets/teaser.png)
 
-Data  is  the  engine  of  modern  computer  vision,  which necessitates collecting large-scale datasets. 
-This is expensive, and guaranteeing the quality of the labels is a major challenge. 
-In this paper, we investigate efficient annotation strategies for collecting multi-class classification labels fora  large  collection  of  images.   
-While  methods  that  exploit learnt  models  for  labeling  exist,  a  surprisingly  prevalent approach is to query humans for a fixed number of labels per datum and aggregate them, which is expensive.  
-Building  on  prior  work  on  online  joint  probabilistic  modeling of  human  annotations  and  machine  generated  beliefs,  we propose  modifications  and  best  practices  aimed  at  minimizing human labeling effort.  
-Specifically, we make use ofadvances in self-supervised learning, view annotation as a semi-supervised learning problem, identify and mitigate pitfalls and ablate several key design choices to propose effective guidelines for labeling. 
-Our analysis is done in a more realistic simulation that involves querying human labelers, which uncovers issues with evaluation using existing worker simulation methods.  
-Simulated experiments on a 125k image subset of the ImageNet dataset with 100 classes showthat it can be annotated to 80% top-1 accuracy with 0.35 annotations per image on average, a 2.7x and 6.7x improvement over prior work and manual annotation, respectively.
+Data  is  the  engine  of  modern  computer  vision,  which necessitates collecting large-scale datasets. This is expensive, and guaranteeing the quality of the labels is a major challenge. In this paper, we investigate efficient annotation strategies for collecting multi-class classification labels fora  large  collection  of  images. While  methods  that  exploit learnt  models  for  labeling  exist,  a  surprisingly  prevalent approach is to query humans for a fixed number of labels per datum and aggregate them, which is expensive. Building  on  prior  work  on  online  joint  probabilistic  modeling of  human  annotations  and  machine  generated  beliefs,  we propose  modifications  and  best  practices  aimed  at  minimizing human labeling effort. Specifically, we make use ofadvances in self-supervised learning, view annotation as a semi-supervised learning problem, identify and mitigate pitfalls and ablate several key design choices to propose effective guidelines for labeling. Our analysis is done in a more realistic simulation that involves querying human labelers, which uncovers issues with evaluation using existing worker simulation methods. Simulated experiments on a 125k image subset of the ImageNet dataset with 100 classes showthat it can be annotated to 80% top-1 accuracy with 0.35 annotations per image on average, a 2.7x and 6.7x improvement over prior work and manual annotation, respectively.
 
 ----------------------- ------------------------------------
 
@@ -33,7 +26,7 @@ TODO
 
 ## Code usage
 
-- Downdload the extracted [BYOL](https://papers.nips.cc/paper/2020/file/f3ada80d5c4ee70142b17b8192b2958e-Paper.pdf) features and change data directory accordingly
+- Downdload the extracted [BYOL](https://papers.nips.cc/paper/2020/file/f3ada80d5c4ee70142b17b8192b2958e-Paper.pdf) features and change root directory accordingly
 ```
 wget -P data/features/ http://www.cs.toronto.edu/~andrew/research/cvpr2021-good_practices/data/byol_r50-e3b0c442.pth_feat1.npy 
 ```
@@ -48,7 +41,7 @@ Replace `REPO_DIR` ([here]()) with the absolute path to the repository.
 ```python
 python main.py experiment=<EXPERIMENT> learner_method=<METHOD> simulation <SIMULATION>
 ```
-To change other configurations, go check the [config.yaml]() here.
+To change other configurations, go check the [config.yaml](https://github.com/fidler-lab/efficient-annotation-cookbook/blob/master/online_label/config/config.yaml) here.
 
 ## Code Structure
 There are several components in our system: `Sampler`, `AnnotationHolder`, `Learner`, `Optimizer` and `Aggregator`.
@@ -57,7 +50,7 @@ There are several components in our system: `Sampler`, `AnnotationHolder`, `Lear
 
 For example, 
 ```python
-python main.py experiment=imagenet_animal learner_method=efficient_annotation simulation amt_structured_noise sampler.algo=greedy_task_assignment sampler.max_annotation_per_worker=2000
+python main.py experiment=imagenet_animal learner_method=efficient_annotation simulation=amt_structured_noise sampler.algo=greedy_task_assignment sampler.max_annotation_per_worker=2000
 ```
 
 - `AnnotationHolder`: It holds all information of each example including worker annotation, ground truth and current risk estimation. For simulated worker, you can call `annotation_holder.collect_annotation` to query annotations. You can also sample the annotation outside and add them by calling `annotation_holder.add_annotation`

@@ -48,7 +48,7 @@ def init_workers(config, wnids):
     return workers
 
 
-def save_state(config, workers, annotation_holder, optimizer, learner, step):
+def save_state(config, workers, annotation_holder, optimizer, learner, step, p=None):
     workers_str = json.dumps([w.save_state() for w in workers.values()])
     annotation_holder_str = annotation_holder.save_state()
     optimizer_str = optimizer.save_state()
@@ -60,10 +60,13 @@ def save_state(config, workers, annotation_holder, optimizer, learner, step):
                  learner_str=learner_str, 
                  step=step)
 
-    if os.path.exists('latest_state.json'):
-        copyfile('latest_state.json', 'backup_state.json')
+    if p is None:
+        if os.path.exists('latest_state.json'):
+            copyfile('latest_state.json', 'backup_state.json')
 
-    json.dump(state, open('latest_state.json', 'w'))
+        json.dump(state, open('latest_state.json', 'w'))
+    else:
+        json.dump(state, open(p, 'w'))
 
 
 def load_state(workers, annotation_holder, optimizer, learner, sampler, filename):

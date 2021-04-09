@@ -54,20 +54,6 @@ imagenet_animal:
     mixmatch_w: 75
 
 
-imagenet_20_classes:
-  none:
-    lr_ratio: 0.0005
-    weight_decay: 0.0005
-  pseudolabel:
-    lr_ratio: 0.001
-    weight_decay: 0.001
-  mixmatch:
-    lr_ratio: 0.001
-    weight_decay: 0.0005
-    mu: 10
-    mixmatch_w: 150
-
-
 imagenet_100_classes:
   none:
     lr_ratio: 0.0005

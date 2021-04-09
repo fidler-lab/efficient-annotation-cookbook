@@ -2,6 +2,9 @@ import numpy as np
 
 from .sampler import Sampler
 
+import logging
+logger = logging.getLogger(__name__)
+
 
 class RandomSampler(Sampler):
 
@@ -11,6 +14,8 @@ class RandomSampler(Sampler):
     def stop(self, risk, **kwargs):
         confident = risk < self.risk_thres
         exceed_max = self.n_annotation >= self.max_annotation_per_example
+        logger.debug(f'Number of unconfident examples: {sum(confident)}')
+        logger.debug(f'Number of examples exceeds budget: {sum(exceed_max)}')
         return np.all(np.logical_or(confident, exceed_max))
 
     def sample(self, hit_size, n_hit, risk, **kwargs):

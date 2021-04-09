@@ -83,9 +83,11 @@ def run_online_loop(config,
     for step in range(start_step+1, config.online.budget // config.online.hit_size+1):
         
         num_valid = sum(info['y_posterior_risk'] < config.risk_thres)
-        if config.early_stop and early_stopper.stop(num_valid, annotation_holder.n_annotation):
+        if early_stopper.stop(num_valid, annotation_holder.n_annotation):
+            save_state_fn(config, annotation_holder.workers, annotation_holder, optimizer, learner, step=step, p='early_stop_state.json')
             logger.info('Early stop since the number of valid examples decreases for certain steps')
-            break
+            if config.early_stop:
+                break
 
         if sampler.stop(info['y_posterior_risk']):
             logger.info('Examples either satisfy the risk criterion or reach maximum number of annotation')

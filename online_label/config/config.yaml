@@ -3,7 +3,7 @@ defaults:
   - hydra/hydra_logging: colorlog
   - experiment: imagenet_split_1
   - simulation: amt_structured_noise
-  - learner_method: good_practices_semi # lean, improved_lean, good_practices_semi, online_ds
+  - learner_method: efficient_annotation # lean, improved_lean, efficient_annotation, online_ds
 
 
 hydra:
