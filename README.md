@@ -20,10 +20,6 @@ Data  is  the  engine  of  modern  computer  vision,  which necessitates collect
 ----------------------- ------------------------------------
 
 
-## License
-TODO
-
-
 ## Code usage
 
 - Downdload the extracted [BYOL](https://papers.nips.cc/paper/2020/file/f3ada80d5c4ee70142b17b8192b2958e-Paper.pdf) features and change root directory accordingly
@@ -31,7 +27,7 @@ TODO
 wget -P data/features/ http://www.cs.toronto.edu/~andrew/research/cvpr2021-good_practices/data/byol_r50-e3b0c442.pth_feat1.npy 
 ```
 
-Replace `REPO_DIR` ([here]()) with the absolute path to the repository.
+Replace `REPO_DIR` ([here](https://github.com/fidler-lab/efficient-annotation-cookbook/blob/master/data/__init__.py)) with the absolute path to the repository.
 
 
 - Run online labeling with simulated workers
@@ -63,14 +59,11 @@ python main.py experiment=imagenet_animal learner_method=efficient_annotation si
 
 
 ## Citation
-TODO
 
 If you use this code, please cite:
 
-    @inproceedings{good_practices,
-    title={Towards Good Practices for Efficiently Annotating Large-Scale Image Classification Datasets},
-    author={Yuan-Hong Liao and Amlan Kar and Sanja Fidler},
-    booktitle={CVPR},
-    year={2021}
-    }
-
+TODO: 
+- citation link
+- paper/supp link
+- record video
+- project page
