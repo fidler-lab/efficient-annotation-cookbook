@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+      /*mouseover & mouseout*/
+      function setNewImage(){
+        document.getElementById("main_image").src = "assets/teaser/colored_grid.png";
+      }
+      function setOldImage(){
+        document.getElementById("main_image").src = "assets/teaser/grid.png";
+      }
+    </script>
+    <style>
+      .article-banner {
+      width: auto;
+      height: auto;
+      border: 0;
+      }
+      img[src="assets/teaser/colored_grid.png"] {
+        border: 0;
+        padding: 0;
+        width: 60%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto; 
+        margin-top: 53px;
+      }
+      img[src="assets/teaser/grid.png"] {
+        border: 0;
+        padding: 0;
+        width: 60%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto; 
+        margin-top: 53px;
+      }
+      
+      figcaption {
+        color: grey;
+        font-style: italic;
+        padding: 2px;
+        text-align: center;
+      }
+      .btn-container {
+          width: 60%;
+          display: flex;
+          justify-content: center;
+          margin-left: auto;
+          margin-right: auto; 
+          z-index: 1000;
+          padding-top: 16px;
+          position: relative;
+      }
+          
+      .ourbutton {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 150px;
+          height: 50px;
+          border-radius: 10px;
+          /*background-color: #ffffff1f;*/
+          background-color:#236b90;
+          border: solid 2px white;
+          color: white;
+          font-size: 18px;
+          cursor: pointer;
+          margin: 0 5px;
+          user-select: none;
+          text-align: center;
+      }
+      .ourbutton:hover {
+          /*background-color: rgba(255, 255, 255, 0.17);*/
+          background-color:#0F2E3D;
+      }
+      .ourbutton:after {
+        background-color: darken(#0F2E3D, 20%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="article-banner">
+      <img id="main_image" onmouseover="setNewImage()" onmouseout="setOldImage()" src="assets/teaser/grid.png" class="article-banner";>
+      <figcaption>Which images require more/fewer human annotation? Hover to see our model's opinion!</figcaption>
+    </div>
+    </a>
+    <div class="btn-container">
+      <div class="ourbutton" onclick="window.open('')">Paper (PDF)</div>
+      <div class="ourbutton" onclick="window.open('')">Code</div>
+      <div class="ourbutton" onclick="window.open('')">Video (TBA)</div>
+      <!--div class="ourbutton" onclick="window.location="#dtbody"">Read ↓</div-->
+    </div>
+  </body>
+</html>
