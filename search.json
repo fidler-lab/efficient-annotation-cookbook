@@ -1,0 +1,12 @@
+{
+  "articles": [
+    {
+      "path": "index.html",
+      "title": "Towards Efficient Annotation",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2021-04-13T18:36:09-04:00"
+    }
+  ],
+  "collections": ["posts/posts.json"]
+}

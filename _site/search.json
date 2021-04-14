@@ -1,0 +1,12 @@
+{
+  "articles": [
+    {
+      "path": "index.html",
+      "title": "Featured Posts",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2021-04-06T17:04:50-04:00"
+    }
+  ],
+  "collections": ["posts/posts.json"]
+}

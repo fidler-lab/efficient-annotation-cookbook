@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>Andrew's Blog</title>
+    <link>https://beta.rstudioconnect.com/content/11424/</link>
+    <atom:link href="https://beta.rstudioconnect.com/content/11424/index.xml" rel="self" type="application/rss+xml"/>
+    <description>All opinions are my own
+</description>
+    <generator>Distill</generator>
+    <lastBuildDate>Tue, 06 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Efficient Annotation Cookbook</title>
+      <dc:creator>Andrew Liao</dc:creator>
+      <dc:creator>Amlan Kar</dc:creator>
+      <dc:creator>Sanja Fidler</dc:creator>
+      <link>https://beta.rstudioconnect.com/content/11424/posts/2021-04-06-efficient-annotation-cookbook</link>
+      <description>Based on the paper "Towards Good Practices for Efficiently Annotating Large-Scale Image Classification Datasets", accepted by CVPR21 as Oral presentation.</description>
+      <guid>https://beta.rstudioconnect.com/content/11424/posts/2021-04-06-efficient-annotation-cookbook</guid>
+      <pubDate>Tue, 06 Apr 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://beta.rstudioconnect.com/content/11424/posts/2021-04-06-efficient-annotation-cookbook/assets/preview.png" medium="image" type="image/png" width="1914" height="957"/>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,29 @@
+[
+  {
+    "path": "posts/2021-04-06-efficient-annotation-cookbook/",
+    "title": "Efficient Annotation Cookbook",
+    "description": "Based on the paper \"Towards Good Practices for Efficiently Annotating Large-Scale Image Classification Datasets\", accepted by CVPR21 as Oral presentation.",
+    "author": [
+      {
+        "name": "Andrew Liao",
+        "url": "https://example.com/norajones"
+      },
+      {
+        "name": "Amlan Kar",
+        "url": "https://example.com/norajones"
+      },
+      {
+        "name": "Sanja Fidler",
+        "url": "https://example.com/norajones"
+      }
+    ],
+    "date": "2021-04-06",
+    "categories": [],
+    "contents": "\n      \n        Images showing which images are uncertain and which are not.\n      \n    \n  ",
+    "preview": "posts/2021-04-06-efficient-annotation-cookbook/assets/preview.png",
+    "last_modified": "2021-04-06T17:04:44-04:00",
+    "input_file": {},
+    "preview_width": 1914,
+    "preview_height": 957
+  }
+]
