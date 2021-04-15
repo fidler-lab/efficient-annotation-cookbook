@@ -9,7 +9,7 @@ For more details, please refer to:
 
 University of Toronto 
 
-[[Paper]]() [[Video]]() [[Supplementary]]() [[Project]]()
+[[Paper]]() [[Video]]() [[Supplementary]]() [[Project]](https://fidler-lab.github.io/efficient-annotation-cookbook/)
 
 **CVPR2021 Oral**
 
