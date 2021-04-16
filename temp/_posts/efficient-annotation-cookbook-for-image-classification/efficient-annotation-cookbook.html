@@ -129,7 +129,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["assets/paper_figures/plot_distraction_compare_cost_target_classes_precision.pdf","assets/paper_figures/plot_human_semi.pdf","assets/paper_figures/plot_imagenet100_top5.pdf","assets/paper_figures/plot_imagenet100.pdf","assets/paper_figures/plot_prior_change-10.pdf","assets/paper_figures/plot_prior_change-30.pdf","assets/paper_figures/plot_prototype_as_val.pdf","assets/paper_figures/plot_risk_change.pdf","assets/paper_figures/plot_self_none.pdf","assets/paper_figures/plot_semi_pitfall.pdf","assets/paper_figures/plot_semi_precision.pdf","assets/paper_figures/plot_semi.pdf","assets/paper_figures/plot_step_size_change.pdf","assets/paper_figures/plot_stopping.pdf","assets/paper_figures/plot_task_assignment_vis.pdf","assets/paper_figures/plot_task_assignment.pdf","assets/paper_figures/plot_unfinished.pdf","assets/paper_figures/plot_unfiorm_structured_noise_pseudolabel.pdf","assets/paper_figures/plot_worker_change.pdf","assets/teaser/colored_grid.png","assets/teaser/grid.png","assets/teaser/teaser.html","assets/thumbnail.png","biblio.bib","efficient-annotation-cookbook_files/anchor-4.2.2/anchor.min.js","efficient-annotation-cookbook_files/bowser-1.9.3/bowser.min.js","efficient-annotation-cookbook_files/distill-2.2.21/template.v2.js","efficient-annotation-cookbook_files/header-attrs-2.7/header-attrs.js","efficient-annotation-cookbook_files/jquery-1.11.3/jquery.min.js","efficient-annotation-cookbook_files/popper-2.6.0/popper.min.js","efficient-annotation-cookbook_files/tippy-6.2.7/tippy-bundle.umd.min.js","efficient-annotation-cookbook_files/tippy-6.2.7/tippy-light-border.css","efficient-annotation-cookbook_files/tippy-6.2.7/tippy.css","efficient-annotation-cookbook_files/tippy-6.2.7/tippy.umd.min.js","efficient-annotation-cookbook_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["assets/paper_figures/imagenet_split_4-proability_change.png","assets/paper_figures/pdf2png.py","assets/paper_figures/plot_distraction_compare_cost_target_classes_precision.png","assets/paper_figures/plot_human_semi.png","assets/paper_figures/plot_imagenet100_top5.png","assets/paper_figures/plot_imagenet100.png","assets/paper_figures/plot_prior_change-10.png","assets/paper_figures/plot_prior_change-30.png","assets/paper_figures/plot_prototype_as_val.png","assets/paper_figures/plot_risk_change.png","assets/paper_figures/plot_self_none.png","assets/paper_figures/plot_semi_pitfall.png","assets/paper_figures/plot_semi_precision.png","assets/paper_figures/plot_semi.png","assets/paper_figures/plot_step_size_change.png","assets/paper_figures/plot_stopping.png","assets/paper_figures/plot_task_assignment_vis.png","assets/paper_figures/plot_task_assignment.png","assets/paper_figures/plot_unfinished.png","assets/paper_figures/plot_unfiorm_structured_noise_pseudolabel.png","assets/paper_figures/plot_worker_change.png","assets/teaser/colored_grid.png","assets/teaser/grid.png","assets/teaser/teaser.html","assets/thumbnail.png","biblio.bib","efficient-annotation-cookbook_files/anchor-4.2.2/anchor.min.js","efficient-annotation-cookbook_files/bowser-1.9.3/bowser.min.js","efficient-annotation-cookbook_files/distill-2.2.21/template.v2.js","efficient-annotation-cookbook_files/header-attrs-2.7/header-attrs.js","efficient-annotation-cookbook_files/jquery-1.11.3/jquery.min.js","efficient-annotation-cookbook_files/popper-2.6.0/popper.min.js","efficient-annotation-cookbook_files/tippy-6.2.7/tippy-bundle.umd.min.js","efficient-annotation-cookbook_files/tippy-6.2.7/tippy-light-border.css","efficient-annotation-cookbook_files/tippy-6.2.7/tippy.css","efficient-annotation-cookbook_files/tippy-6.2.7/tippy.umd.min.js","efficient-annotation-cookbook_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1549,7 +1549,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       </a>
       <div class="btn-container">
         <div class="ourbutton" onclick="window.open('')">Paper (PDF)</div>
-        <div class="ourbutton" onclick="window.open('')">Code</div>
+        <div class="ourbutton" onclick="window.open('https://github.com/fidler-lab/efficient-annotation-cookbook')">Code</div>
         <div class="ourbutton" onclick="window.open('')">Video (TBA)</div>
         <!--div class="ourbutton" onclick="window.location="#dtbody"">Read ↓</div-->
       </div>
@@ -1617,6 +1617,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><a href="#pre-filtering-dataset-to-some-extent">Pre-filtering Dataset to some extent</a></li>
 <li><a href="#early-stopping-saves-you-some-money">Early Stopping Saves you some Money</a></li>
 </ul></li>
+<li><a href="#analysis">Analysis</a>
+<ul>
+<li><a href="#greedy-task-assignment-w-estimated-worker-skills">Greedy Task Assignment w/ estimated Worker Skills</a></li>
+<li><a href="#how-does-the-annotation-process-look-like">How does the Annotation Process look like</a></li>
+</ul></li>
 <li><a href="#discussion">Discussion</a>
 <ul>
 <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -1626,6 +1631,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </nav>
 </div>
 <p>Data is the engine of modern computer vision, which necessitates collecting large-scale datasets. This is expensive, and guaranteeing the quality of the labels is a major challenge. We investigate <strong>efficient annotation strategies</strong> for collecting multi-class classification labels for a large collection of images.</p>
+<p>In this paper, we show that incorporating machine learner to online labeling coupled with several good design choices, we can increase the annotation efficiency significantly. We end up being <strong>2.7x efficient (w/ 63% less annotations)</strong> w.r.t prior work and <strong>6.7x efficient (w/ 85% less annotations)</strong> w.r.t. manual annotations.</p>
+<aside>
+shout out to <span class="citation" data-cites="Branson_2017_CVPR"><a href="#ref-Branson_2017_CVPR" role="doc-biblioref">Branson, Van Horn, and Perona</a> (<a href="#ref-Branson_2017_CVPR" role="doc-biblioref">2017</a>)</span> that inspires this work.
+</aside>
 <h1 id="laborious-annotation-process">Laborious Annotation Process</h1>
 <p>A common approach used in practice is to query humans to get a fixed number of labels per datum and aggregate them <span class="citation" data-cites="lin2014microsoft kaur2019foodx russakovsky2015imagenet">(<a href="#ref-lin2014microsoft" role="doc-biblioref">Lin et al. 2014</a>; <a href="#ref-kaur2019foodx" role="doc-biblioref">Kaur et al. 2019</a>; <a href="#ref-russakovsky2015imagenet" role="doc-biblioref">Russakovsky et al. 2015</a>)</span> presumably because of its simplicity and reliability. This can be prohibitively expensive and inefficient in human resource utilization for large datasets, as it assumes equal effort needed per datum.</p>
 <h1 id="background-and-testbed">Background and Testbed</h1>
@@ -1690,7 +1699,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Prior work <span class="citation" data-cites="hua2013collaborative long2015multi">(<a href="#ref-hua2013collaborative" role="doc-biblioref">Hua et al. 2013</a>; <a href="#ref-long2015multi" role="doc-biblioref">Long and Hua 2015</a>)</span> simulates workers as confusion matrices. Class confusion was modeled with symmetric uniform noise, which can result in <em>over-optimistic</em> performance estimates. Human annotators exhibit asymmetric and structured confusion <em>i.e.</em>, classes get confused with each other differently. In Fig.<a href="#fig:structured-workers">1</a>, we compare the number of annotations per image in simulation using uniform label noise vs. structured label noise that we crowdsource. We see significant gaps between the two. This arises particularly when using learnt models in the loop due to sensitivity to noisy labels coming from structured confusion in the workers. Therefore, we use simulated workers with structured noise in ImageNet100 Sandbox.</p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <div class="figure"><span id="fig:structured-workers"></span>
-<img src="assets/paper_figures/plot_unfiorm_structured_noise_pseudolabel.pdf" alt="Over-optimistic results from workers with uniform noise. Human workers tend to make *structured* mistakes. Simulated workers with uniform label noise (blue) can result in over-optimistic annotation performance. Experiments under workers with structured noise reflect real-life performance better."  />
+<img src="assets/paper_figures/plot_unfiorm_structured_noise_pseudolabel.png" alt="Over-optimistic results from workers with uniform noise. Human workers tend to make *structured* mistakes. Simulated workers with uniform label noise (blue) can result in over-optimistic annotation performance. Experiments under workers with structured noise reflect real-life performance better." width="2098" />
 <p class="caption">
 Figure 1: Over-optimistic results from workers with uniform noise. Human workers tend to make <em>structured</em> mistakes. Simulated workers with uniform label noise (blue) can result in over-optimistic annotation performance. Experiments under workers with structured noise reflect real-life performance better.
 </p>
@@ -1703,17 +1712,17 @@ Figure 1: Over-optimistic results from workers with uniform noise. Human workers
 <p>During online-labeling, the goal is to infer true labels for all images in the dataset, making model learning akin to transductive learning <span class="citation" data-cites="joachims1999transductive">(<a href="#ref-joachims1999transductive" role="doc-biblioref">Joachims 1999</a>)</span>, where the test set is observed and can be used for learning. Thus, it is reasonable to expect efficiency gains if the dataset’s underlying structure is exploited by putting the unlabeled data to work, using semi-supervised learning. In Fig.<a href="#fig:semi-supervised">2</a> we perform <em>Peudolabel</em> and <em>Mixmatch</em> in online-labeling.</p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <div class="figure"><span id="fig:semi-supervised"></span>
-<img src="assets/paper_figures/plot_semi.pdf" alt="Incorporating semi-supervised approaches consistently increases efficiency. Note that semi-supervised learning does not have a significant boost in Dog subset due ot the poor worker quality (43%). When eyeballing the subset, we also find ineligible label errors in the Dog subset."  />
+<img src="assets/paper_figures/plot_semi.png" alt="Incorporating semi-supervised approaches consistently increases efficiency. Note that semi-supervised learning does not have a significant boost in Dog subset due ot the poor worker quality (43%). When eyeballing the subset, we also find ineligible label errors in the Dog subset." width="2098" />
 <p class="caption">
 Figure 2: Incorporating semi-supervised approaches consistently increases efficiency. Note that semi-supervised learning does not have a significant boost in Dog subset due ot the poor worker quality (43%). When eyeballing the subset, we also find ineligible label errors in the Dog subset.
 </p>
 </div>
 </div>
 <h3 id="self-supervised-learning-advances-online-labeling">Self-Supervised Learning Advances Online-Labeling</h3>
-<p>With recent advances in self-supervised learning, it is feasible to learn strong image feature extractors that rival supervised learning, using pretext tasks without any label. This allows learning in-domain feature extractors for annotation tasks, as opposed to using features pre-trained on ImageNet We compare the efficacy of using BYOL <span class="citation" data-cites="grill2020bootstrap">(<a href="#ref-grill2020bootstrap" role="doc-biblioref">Grill et al. 2020</a>)</span>, SimCLR <span class="citation" data-cites="chen2020simple">(<a href="#ref-chen2020simple" role="doc-biblioref">Chen et al. 2020</a>)</span>, MoCo <span class="citation" data-cites="he2019moco">(<a href="#ref-he2019moco" role="doc-biblioref">He et al. 2019</a>)</span>, relative location prediction <span class="citation" data-cites="doersch2015unsupervised">(<a href="#ref-doersch2015unsupervised" role="doc-biblioref">Doersch, Gupta, and Efros 2015</a>)</span> and rotation prediction <span class="citation" data-cites="gidaris2018unsupervised">(<a href="#ref-gidaris2018unsupervised" role="doc-biblioref">Gidaris, Singh, and Komodakis 2018</a>)</span> learnt on full ImageNet raw images as the feature extractor. In Fig.<a href="#fig:self-supervised">3</a>, we show that improvements in self-supervised learning consistently increase the efficiency for datasets with both fine and coarse-grained labels, with up to <strong>5x improvement</strong> at similar accuracy compared to not using a machine learning model in the loop (online DS).</p>
+<p>With recent advances in self-supervised learning, it is feasible to learn strong image feature extractors that rival supervised learning, using pretext tasks without any label. This allows learning in-domain feature extractors for annotation tasks, as opposed to using features pre-trained on ImageNet We compare the efficacy of using BYOL <span class="citation" data-cites="grill2020bootstrap">(<a href="#ref-grill2020bootstrap" role="doc-biblioref">Grill et al. 2020</a>)</span>, SimCLR <span class="citation" data-cites="chen2020simple">(<a href="#ref-chen2020simple" role="doc-biblioref">T. Chen et al. 2020</a>)</span>, MoCo <span class="citation" data-cites="he2019moco">(<a href="#ref-he2019moco" role="doc-biblioref">He et al. 2019</a>)</span>, relative location prediction <span class="citation" data-cites="doersch2015unsupervised">(<a href="#ref-doersch2015unsupervised" role="doc-biblioref">Doersch, Gupta, and Efros 2015</a>)</span> and rotation prediction <span class="citation" data-cites="gidaris2018unsupervised">(<a href="#ref-gidaris2018unsupervised" role="doc-biblioref">Gidaris, Singh, and Komodakis 2018</a>)</span> learnt on full ImageNet raw images as the feature extractor. In Fig.<a href="#fig:self-supervised">3</a>, we show that improvements in self-supervised learning consistently increase the efficiency for datasets with both fine and coarse-grained labels, with up to <strong>5x improvement</strong> at similar accuracy compared to not using a machine learning model in the loop (online DS).</p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <div class="figure"><span id="fig:self-supervised"></span>
-<img src="assets/paper_figures/plot_self_none.pdf" alt="The improvements in self-supervised learning can be translated seemingly to online labeling. Note that no semi-supervised tricks are applied in this figure."  />
+<img src="assets/paper_figures/plot_self_none.png" alt="The improvements in self-supervised learning can be translated seemingly to online labeling. Note that no semi-supervised tricks are applied in this figure." width="2098" />
 <p class="caption">
 Figure 3: The improvements in self-supervised learning can be translated seemingly to online labeling. Note that no semi-supervised tricks are applied in this figure.
 </p>
@@ -1723,7 +1732,7 @@ Figure 3: The improvements in self-supervised learning can be translated seeming
 <p>The validation set plays an important role in online-labeling. It is used to perform model selection and model calibration. Prior work <span class="citation" data-cites="Branson_2017_CVPR">(<a href="#ref-Branson_2017_CVPR" role="doc-biblioref">Branson, Van Horn, and Perona 2017</a>)</span> uses a modified cross-validation approach to generate model likelihoods. We find that this could underperform when the estimated labels are noisy, which pollutes the validation set and makes calibration challenging. Instead, we propose to use the clean prototype images as the validation set. In our paper, we use 10 prototype images per class. We perform 3-fold cross-validation in this experiment. When not using cross-validation, we either randomly select a subset as the validation set or use the (clean) prototype images as the validation set. In Fig.<a href="#fig:clean-validation">4</a>, we ablate the importance of having a clean validation set and performing cross-validation in terms of accuracy and expected calibration error on the most challenging subset, the Dog subset.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure"><span id="fig:clean-validation"></span>
-<img src="assets/paper_figures/plot_prototype_as_val.pdf" alt="The validation set plays an important role of online-labeling. It is used to perform model selection and model calibration. We compare the importance of using clean examples as the validation set. When not using a clean validation set, the model tends to produce poorly calibrated probability (w/ calibration method applied [@guo2017calibration]), resulting in poor accuracy."  />
+<img src="assets/paper_figures/plot_prototype_as_val.png" alt="The validation set plays an important role of online-labeling. It is used to perform model selection and model calibration. We compare the importance of using clean examples as the validation set. When not using a clean validation set, the model tends to produce poorly calibrated probability (w/ calibration method applied [@guo2017calibration]), resulting in poor accuracy." width="1316" />
 <p class="caption">
 Figure 4: The validation set plays an important role of online-labeling. It is used to perform model selection and model calibration. We compare the importance of using clean examples as the validation set. When not using a clean validation set, the model tends to produce poorly calibrated probability (w/ calibration method applied <span class="citation" data-cites="guo2017calibration">(<a href="#ref-guo2017calibration" role="doc-biblioref">Guo et al. 2017</a>)</span>), resulting in poor accuracy.
 </p>
@@ -1734,7 +1743,7 @@ Figure 4: The validation set plays an important role of online-labeling. It is u
 <p>In reality, the requestor can ask gold standard questions or apply prior knowledge to design the prior <span class="math inline">\(p(w_j)\)</span>. We explore two possible prior <strong>A)</strong> Considering class identity and <strong>B)</strong> Considering worker identity. To consider the class identity, the task designer needs to have a clear thought of which classes are more difficult than others. To consider the worker’s identity, the task designer needs to query several gold standard questions from each worker. In Fig.<a href="#fig:prior-change">5</a>, we find that considering worker identity is especially useful for fine-grained datasets, such as Dog subset, improving 15 accuracy points in Dog, while in Commodity, the improvement is marginal.</p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <div class="figure"><span id="fig:prior-change"></span>
-<img src="assets/paper_figures/plot_prior_change-10.pdf" alt="For the fine-grained dataset, it is usually worth using gold standard questions to get a better prior over worker skills. The number appended in the legend denotes the prior strength."  />
+<img src="assets/paper_figures/plot_prior_change-10.png" alt="For the fine-grained dataset, it is usually worth using gold standard questions to get a better prior over worker skills. The number appended in the legend denotes the prior strength." width="2098" />
 <p class="caption">
 Figure 5: For the fine-grained dataset, it is usually worth using gold standard questions to get a better prior over worker skills. The number appended in the legend denotes the prior strength.
 </p>
@@ -1744,7 +1753,7 @@ Figure 5: For the fine-grained dataset, it is usually worth using gold standard 
 <p>One way to speed up the dataset annotation process is to hire more workers at the same time. However, under a fixed number of total annotations, having more workers means having fewer observations for each worker, resulting in poor worker skill estimation. We explore this tradeoff by manipulating the number of workers involved in Fig.<a href="#fig:number-workers">6</a>. The gap is surprisingly high in the fine-grained dataset (14% accuracy points difference in Dog subset), while there is nearly no tradeoff in the coarse-grained dataset, such as Commodity subset.</p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <div class="figure"><span id="fig:number-workers"></span>
-<img src="assets/paper_figures/plot_worker_change.pdf" alt="Hiring more workers saves the total time to annotate a dataset, while it sacrifices the accuracy of the dataset sometimes. For the fine-grained dataset, the gap between using 10 workers and 1000 workers is around 14 accuracy points, while in the coarse-grained dataset, there is nearly no tradeoff."  />
+<img src="assets/paper_figures/plot_worker_change.png" alt="Hiring more workers saves the total time to annotate a dataset, while it sacrifices the accuracy of the dataset sometimes. For the fine-grained dataset, the gap between using 10 workers and 1000 workers is around 14 accuracy points, while in the coarse-grained dataset, there is nearly no tradeoff." width="2098" />
 <p class="caption">
 Figure 6: Hiring more workers saves the total time to annotate a dataset, while it sacrifices the accuracy of the dataset sometimes. For the fine-grained dataset, the gap between using 10 workers and 1000 workers is around 14 accuracy points, while in the coarse-grained dataset, there is nearly no tradeoff.
 </p>
@@ -1755,7 +1764,7 @@ Figure 6: Hiring more workers saves the total time to annotate a dataset, while 
 <p>We have assumed that the requestor performs perfect filtering before annotation, <em>i.e.</em>, all the images to be annotated belong to the target classes, which does not always hold. We add an additional “None of These” class and ablate annotation efficiency in the presence of unfiltered images. We include different numbers of images from other classes and measure the mean precision with the number of annotations of the target classes. In Fig.<a href="#fig:distraction-image">7</a>, we see that even with 100% more images from irrelevant classes, we can retain comparable efficiency on a fine-grained dataset.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure"><span id="fig:distraction-image"></span>
-<img src="assets/paper_figures/plot_distraction_compare_cost_target_classes_precision.pdf" alt="We intentionally add some irrelevance images from other classes to mimic the real-world cases. In our experiments, we find that even with 100% more images from irrelevant classes, we can still retain comparable efficiency." width="50%" />
+<img src="assets/paper_figures/plot_distraction_compare_cost_target_classes_precision.png" alt="We intentionally add some irrelevance images from other classes to mimic the real-world cases. In our experiments, we find that even with 100% more images from irrelevant classes, we can still retain comparable efficiency." width="50%" />
 <p class="caption">
 Figure 7: We intentionally add some irrelevance images from other classes to mimic the real-world cases. In our experiments, we find that even with 100% more images from irrelevant classes, we can still retain comparable efficiency.
 </p>
@@ -1768,9 +1777,40 @@ In online-labeling, we estimate the risk for each example at every step. If the 
 </aside>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure"><span id="fig:early-stopping"></span>
-<img src="assets/paper_figures/plot_stopping.pdf" alt="We perform early stopping by monitoring the size of the finished set. This avoids over-sampling for confusing images and leaves the rest of them to expert workers if possible. Dashed lines represent the trajectories using stopping criterion from prior work [@Branson_2017_CVPR]" width="50%" />
+<img src="assets/paper_figures/plot_stopping.png" alt="We perform early stopping by monitoring the size of the finished set. This avoids over-sampling for confusing images and leaves the rest of them to expert workers if possible. Dashed lines represent the trajectories using stopping criterion from prior work [@Branson_2017_CVPR]" width="50%" />
 <p class="caption">
 Figure 8: We perform early stopping by monitoring the size of the finished set. This avoids over-sampling for confusing images and leaves the rest of them to expert workers if possible. Dashed lines represent the trajectories using stopping criterion from prior work <span class="citation" data-cites="Branson_2017_CVPR">(<a href="#ref-Branson_2017_CVPR" role="doc-biblioref">Branson, Van Horn, and Perona 2017</a>)</span>
+</p>
+</div>
+</div>
+<h1 id="analysis">Analysis</h1>
+<h3 id="greedy-task-assignment-w-estimated-worker-skills">Greedy Task Assignment w/ estimated Worker Skills</h3>
+<p>There are certain particularly hard classes, with only a few workers having enough expertise to annotate them correctly. We ask whether the learnt skills can be used to assign tasks better. Prior work on (optimal) task assignment tackle crowdsourcing settings with vastly different simplifying assumptions <span class="citation" data-cites="ho2013adaptive chen2015statistical">(<a href="#ref-ho2013adaptive" role="doc-biblioref">Ho, Jabbari, and Vaughan 2013</a>; <a href="#ref-chen2015statistical" role="doc-biblioref">X. Chen, Lin, and Zhou 2015</a>)</span>, and designing a new task assignment scheme is out of the scope of this paper. We verify if the learnt worker skills help with task assignment by proposing a simple greedy algorithm with a cap on the maximum number of annotations per worker. Fig.<a href="#fig:task-assignment">9</a> shows that the above-mentioned task assignment scheme consistently improves over the random assignment, implying that the learnt skills are both representative and good enough to bring some improvements.</p>
+<p>Fig.<a href="#fig:taskassignment-vis">10</a> visualizes the worker’s importance versus the number of annotations per worker. Since there is no exploration in the proposed task assignment, the workers are separated into two groups: overwork (top right) and underwork (bottom left).</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<div class="figure"><span id="fig:task-assignment"></span>
+<img src="assets/paper_figures/plot_task_assignment.png" alt="The simple greedy task assignment scheme consistently improves over random assignment both in fine-grained and coarse-grained subsets." width="2098" />
+<p class="caption">
+Figure 9: The simple greedy task assignment scheme consistently improves over random assignment both in fine-grained and coarse-grained subsets.
+</p>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:taskassignment-vis"></span>
+<img src="assets/paper_figures/plot_task_assignment_vis.png" alt="Since there is no exploration in the proposed task assignment, the workers are separated into two groups: overwork (top right) and underwork (bottom left)." width="1316" />
+<p class="caption">
+Figure 10: Since there is no exploration in the proposed task assignment, the workers are separated into two groups: overwork (top right) and underwork (bottom left).
+</p>
+</div>
+</div>
+<h3 id="how-does-the-annotation-process-look-like">How does the Annotation Process look like</h3>
+<p>To further see how the annotation process is like, we sample 100 data points on the Commodity subset and visualize the risk change and accuracy change through time. In the top row of Fig.<a href="#fig:commodity-change">11</a>, we show the risk of the aggregated probability <span class="math inline">\(p_i\)</span> and the risk of the machine learner’s probability <span class="math inline">\(p_i^{\text{ML}}\)</span>. Each column represents one data point. We can see from the aggregated probability (top-left) that the risk gradually decreases as time goes by. Comparing the risk of <span class="math inline">\(p_i\)</span> and <span class="math inline">\(p_i^{\text{ML}}\)</span>, we find that the annotation process can be separated into two stages. In the first stage, the machine learner dominates the progress, while in the second stage, the worker annotations dominate it.</p>
+<p>In the bottom row of Fig.<a href="#fig:commodity-change">11</a>, we show the correctness of each example of <span class="math inline">\(p_i\)</span> and <span class="math inline">\(p_i^{\text{ML}}\)</span>. This coincides with the trend mentioned above. The reason that the machine learner saturates quickly might be due to the lack of expressivity. In our work, our machine learner only fine-tunes the last few layers.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:commodity-change"></span>
+<img src="assets/paper_figures/imagenet_split_4-proability_change.png" alt="Top row: the risk of the aggregated probability and machine learner's probability. Bottom row: Correctness of the aggregated probability and machine learner's probability. Comparing the left and right columns, we find that the annotation process can be separated into two stages. In the first stage, the machine learner dominates the progress, while in the second stage, the worker annotations dominate it." width="629" />
+<p class="caption">
+Figure 11: Top row: the risk of the aggregated probability and machine learner’s probability. Bottom row: Correctness of the aggregated probability and machine learner’s probability. Comparing the left and right columns, we find that the annotation process can be separated into two stages. In the first stage, the machine learner dominates the progress, while in the second stage, the worker annotations dominate it.
 </p>
 </div>
 </div>
@@ -1799,6 +1839,9 @@ Branson, Steve, Grant Van Horn, and Pietro Perona. 2017. <span>“Lean Crowdsour
 <div id="ref-chen2020simple" class="csl-entry" role="doc-biblioentry">
 Chen, Ting, Simon Kornblith, Mohammad Norouzi, and Geoffrey Hinton. 2020. <span>“A Simple Framework for Contrastive Learning of Visual Representations.”</span> <em>arXiv Preprint arXiv:2002.05709</em>.
 </div>
+<div id="ref-chen2015statistical" class="csl-entry" role="doc-biblioentry">
+Chen, Xi, Qihang Lin, and Dengyong Zhou. 2015. <span>“Statistical Decision Making for Optimal Budget Allocation in Crowd Labeling.”</span> <em>The Journal of Machine Learning Research</em> 16 (1): 1–46.
+</div>
 <div id="ref-dawid1979maximum" class="csl-entry" role="doc-biblioentry">
 Dawid, Alexander Philip, and Allan M Skene. 1979. <span>“Maximum Likelihood Estimation of Observer Error-Rates Using the EM Algorithm.”</span> <em>Journal of the Royal Statistical Society: Series C (Applied Statistics)</em> 28 (1): 20–28.
 </div>
@@ -1816,6 +1859,9 @@ Guo, Chuan, Geoff Pleiss, Yu Sun, and Kilian Q Weinberger. 2017. <span>“On Cal
 </div>
 <div id="ref-he2019moco" class="csl-entry" role="doc-biblioentry">
 He, Kaiming, Haoqi Fan, Yuxin Wu, Saining Xie, and Ross Girshick. 2019. <span>“Momentum Contrast for Unsupervised Visual Representation Learning.”</span> <em>arXiv Preprint arXiv:1911.05722</em>.
+</div>
+<div id="ref-ho2013adaptive" class="csl-entry" role="doc-biblioentry">
+Ho, Chien-Ju, Shahin Jabbari, and Jennifer Wortman Vaughan. 2013. <span>“Adaptive Task Assignment for Crowdsourced Classification.”</span> In <em>International Conference on Machine Learning</em>, 534–42.
 </div>
 <div id="ref-hua2013collaborative" class="csl-entry" role="doc-biblioentry">
 Hua, Gang, Chengjiang Long, Ming Yang, and Yan Gao. 2013. <span>“Collaborative Active Learning of a Kernel Machine Ensemble for Recognition.”</span> In <em>Proceedings of the IEEE International Conference on Computer Vision</em>, 1209–16.

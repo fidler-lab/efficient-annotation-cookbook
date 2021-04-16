@@ -40,7 +40,12 @@ knitr::opts_chunk$set(echo = FALSE)
 
 Data is the engine of modern computer vision, which necessitates collecting large-scale datasets. This is expensive, and guaranteeing the quality of the labels is a major challenge. We investigate **efficient annotation strategies** for collecting multi-class classification labels for a large collection of images. 
 
+In this paper, we show that incorporating machine learner to online labeling coupled with several good design choices, we can increase the annotation efficiency significantly.
+We end up being **2.7x efficient (w/ 63% less annotations)** w.r.t prior work and **6.7x efficient (w/ 85% less annotations)** w.r.t. manual annotations.
 
+<aside>
+shout out to @Branson_2017_CVPR that inspires this work.
+</aside>
 
 # Laborious Annotation Process
 
@@ -84,7 +89,7 @@ Evaluating and ablating multi-class label annotation efficiency at scale require
 Prior work [@hua2013collaborative; @long2015multi] simulates workers as confusion matrices. Class confusion was modeled with symmetric uniform noise, which can result in *over-optimistic* performance estimates. Human annotators exhibit asymmetric and structured confusion *i.e.*, classes get confused with each other differently. In Fig.\@ref(fig:structured-workers), we compare the number of annotations per image in simulation using uniform label noise vs. structured label noise that we crowdsource. We see significant gaps between the two. This arises particularly when using learnt models in the loop due to sensitivity to noisy labels coming from structured confusion in the workers. Therefore, we use simulated workers with structured noise in ImageNet100 Sandbox.
 
 ```{r structured-workers, fig.cap="Over-optimistic results from workers with uniform noise. Human workers tend to make *structured* mistakes. Simulated workers with uniform label noise (blue) can result in over-optimistic annotation performance. Experiments under workers with structured noise reflect real-life performance better.", echo=FALSE, layout="l-body-outset"}
-knitr::include_graphics("assets/paper_figures/plot_unfiorm_structured_noise_pseudolabel.pdf")
+knitr::include_graphics("assets/paper_figures/plot_unfiorm_structured_noise_pseudolabel.png")
 ```
 
 
@@ -101,7 +106,7 @@ In the following, we show how each component affects the final efficiency:
 During online-labeling, the goal is to infer true labels for all images in the dataset, making model learning akin to transductive learning [@joachims1999transductive], where the test set is observed and can be used for learning. Thus, it is reasonable to expect efficiency gains if the dataset’s underlying structure is exploited by putting the unlabeled data to work, using semi-supervised learning. In Fig.\@ref(fig:semi-supervised) we perform *Peudolabel* and *Mixmatch* in online-labeling.
 
 ```{r semi-supervised, fig.cap="Incorporating semi-supervised approaches consistently increases efficiency. Note that semi-supervised learning does not have a significant boost in Dog subset due ot the poor worker quality (43%). When eyeballing the subset, we also find ineligible label errors in the Dog subset.", echo=FALSE, layout="l-body-outset"}
-knitr::include_graphics("assets/paper_figures/plot_semi.pdf")
+knitr::include_graphics("assets/paper_figures/plot_semi.png")
 ```
 
 ### Self-Supervised Learning Advances Online-Labeling
@@ -110,7 +115,7 @@ We compare the efficacy of using BYOL [@grill2020bootstrap], SimCLR [@chen2020si
 
 
 ```{r self-supervised, fig.cap="The improvements in self-supervised learning can be translated seemingly to online labeling. Note that no semi-supervised tricks are applied in this figure.", echo=FALSE, layout="l-body-outset"}
-knitr::include_graphics("assets/paper_figures/plot_self_none.pdf")
+knitr::include_graphics("assets/paper_figures/plot_self_none.png")
 ```
 
 ### Clean Validation set Matters in Accuracy and Calibration Error
@@ -121,7 +126,7 @@ When not using cross-validation, we either randomly select a subset as the valid
 In Fig.\@ref(fig:clean-validation), we ablate the importance of having a clean validation set and performing cross-validation in terms of accuracy and expected calibration error on the most challenging subset, the Dog subset.
 
 ```{r clean-validation, fig.cap="The validation set plays an important role of online-labeling. It is used to perform model selection and model calibration. We compare the importance of using clean examples as the validation set. When not using a clean validation set, the model tends to produce poorly calibrated probability (w/ calibration method applied [@guo2017calibration]), resulting in poor accuracy.", echo=FALSE, layout="l-body"}
-knitr::include_graphics("assets/paper_figures/plot_prototype_as_val.pdf")
+knitr::include_graphics("assets/paper_figures/plot_prototype_as_val.png")
 ```
 
 # Matters of Workers
@@ -136,7 +141,7 @@ To consider the worker's identity, the task designer needs to query several gold
 In Fig.\@ref(fig:prior-change), we find that considering worker identity is especially useful for fine-grained datasets, such as Dog subset, improving 15 accuracy points in Dog, while in Commodity, the improvement is marginal.
 
 ```{r prior-change, fig.cap="For the fine-grained dataset, it is usually worth using gold standard questions to get a better prior over worker skills. The number appended in the legend denotes the prior strength.",  echo=FALSE, layout="l-body-outset"}
-knitr::include_graphics("assets/paper_figures/plot_prior_change-10.pdf")
+knitr::include_graphics("assets/paper_figures/plot_prior_change-10.png")
 ```
 
 ### Tradeoff between number of workers and time cost
@@ -146,7 +151,7 @@ We explore this tradeoff by manipulating the number of workers involved in Fig.\
 The gap is surprisingly high in the fine-grained dataset (14% accuracy points difference in Dog subset), while there is nearly no tradeoff in the coarse-grained dataset, such as Commodity subset.
 
 ```{r number-workers, fig.cap="Hiring more workers saves the total time to annotate a dataset, while it sacrifices the accuracy of the dataset sometimes. For the fine-grained dataset, the gap between using 10 workers and 1000 workers is around 14 accuracy points, while in the coarse-grained dataset, there is nearly no tradeoff.",  echo=FALSE, layout="l-body-outset"}
-knitr::include_graphics("assets/paper_figures/plot_worker_change.pdf")
+knitr::include_graphics("assets/paper_figures/plot_worker_change.png")
 ```
 
 
@@ -160,7 +165,7 @@ We include different numbers of images from other classes and measure the mean p
 In Fig.\@ref(fig:distraction-image), we see that even with 100% more images from irrelevant classes, we can retain comparable efficiency on a fine-grained dataset.
 
 ```{r distraction-image, out.width="50%", fig.cap="We intentionally add some irrelevance images from other classes to mimic the real-world cases. In our experiments, we find that even with 100% more images from irrelevant classes, we can still retain comparable efficiency.",  echo=FALSE, layout="l-body"}
-knitr::include_graphics("assets/paper_figures/plot_distraction_compare_cost_target_classes_precision.pdf")
+knitr::include_graphics("assets/paper_figures/plot_distraction_compare_cost_target_classes_precision.png")
 ```
 
 
@@ -174,10 +179,47 @@ In online-labeling, we estimate the risk for each example at every step. If the 
 </aside>
 
 ```{r early-stopping, out.width="50%", fig.cap="We perform early stopping by monitoring the size of the finished set. This avoids over-sampling for confusing images and leaves the rest of them to expert workers if possible. Dashed lines represent the trajectories using stopping criterion from prior work [@Branson_2017_CVPR]",  echo=FALSE, layout="l-body"}
-knitr::include_graphics("assets/paper_figures/plot_stopping.pdf")
+knitr::include_graphics("assets/paper_figures/plot_stopping.png")
 ```
 
 
+# Analysis
+
+### Greedy Task Assignment w/ estimated Worker Skills
+
+There are certain particularly hard classes, with only a few workers having enough expertise to annotate them correctly. We ask whether the learnt skills can be used to assign tasks better. Prior work on (optimal) task assignment tackle crowdsourcing settings with vastly different simplifying assumptions [@ho2013adaptive;@chen2015statistical], and designing a new task assignment scheme is out of the scope of this paper.
+We verify if the learnt worker skills help with task assignment by proposing a simple greedy algorithm with a cap on the maximum number of annotations per worker.
+Fig.\@ref(fig:task-assignment) shows that the above-mentioned task assignment scheme consistently improves over the random assignment, implying that the learnt skills are both representative and good enough to bring some improvements.
+
+Fig.\@ref(fig:taskassignment-vis) visualizes the worker's importance versus the number of annotations per worker. 
+Since there is no exploration in the proposed task assignment, the workers are separated into two groups: overwork (top right) and underwork (bottom left).
+
+```{r task-assignment, fig.cap="The simple greedy task assignment scheme consistently improves over random assignment both in fine-grained and coarse-grained subsets.",  echo=FALSE, layout="l-body-outset"}
+knitr::include_graphics("assets/paper_figures/plot_task_assignment.png")
+```
+
+
+```{r taskassignment-vis, fig.cap="Since there is no exploration in the proposed task assignment, the workers are separated into two groups: overwork (top right) and underwork (bottom left).",  echo=FALSE, layout="l-body"}
+knitr::include_graphics("assets/paper_figures/plot_task_assignment_vis.png")
+```
+
+
+### How does the Annotation Process look like
+
+To further see how the annotation process is like, we sample 100 data points on the Commodity subset and visualize the risk change and accuracy change through time.
+In the top row of Fig.\@ref(fig:commodity-change), we show the risk of the aggregated probability $p_i$ and the risk of the machine learner's probability $p_i^{\text{ML}}$.
+Each column represents one data point. We can see from the aggregated probability (top-left) that the risk gradually decreases as time goes by. 
+Comparing the risk of $p_i$ and $p_i^{\text{ML}}$, we find that the annotation process can be separated into two stages.
+In the first stage, the machine learner dominates the progress, while in the second stage, the worker annotations dominate it.
+
+In the bottom row of Fig.\@ref(fig:commodity-change), we show the correctness of each example of $p_i$ and $p_i^{\text{ML}}$. 
+This coincides with the trend mentioned above.
+The reason that the machine learner saturates quickly might be due to the lack of expressivity. In our work, our machine learner only fine-tunes the last few layers.
+
+
+```{r commodity-change, fig.cap="Top row: the risk of the aggregated probability and machine learner's probability. Bottom row: Correctness of the aggregated probability and machine learner's probability. Comparing the left and right columns, we find that the annotation process can be separated into two stages. In the first stage, the machine learner dominates the progress, while in the second stage, the worker annotations dominate it.",  echo=FALSE, layout="l-body"}
+knitr::include_graphics("assets/paper_figures/imagenet_split_4-proability_change.png")
+```
 # Discussion
 
 We presented improved online-labeling methods for large multi-class datasets. In a realistically simulated experiment with 125k images and 100 labels from ImageNet, we observe a 2.7x reduction in annotations required w.r.t. prior work to achieve 80% top-1 label accuracy. 
