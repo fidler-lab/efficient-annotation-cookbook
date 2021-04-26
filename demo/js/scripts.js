@@ -15,6 +15,7 @@ $('#run-btn').on('click', function (e) {
     console.log(model_freq);
     console.log(features);
 
+
     if (n_workers.length == 0 || n_gold_q.length == 0 || agg.length == 0){
         msg = 'Some items are empty'
         window.alert(msg);
@@ -24,6 +25,10 @@ $('#run-btn').on('click', function (e) {
         window.alert(msg);
     }
     else {
-        window.alert('Run');
+        // Change the src based on variable given
+        var parent = $("embed#html-results").parent();
+        var newElement = "<embed id='html-results' type='text/html' src='assets/results/example.html' width=100% height=100%>";
+        $("embed#html-results").remove();
+        parent.append(newElement);    
     }
 })
