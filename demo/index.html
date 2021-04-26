@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>[Demo] Towards Good Practices for Efficiently Annotating Large-Scale Image Classification Datasets</title>
+	<link href="https://fonts.googleapis.com/css?family=Crimson+Text|Forum|Gentium+Book+Basic|Hind|Karla:400,700|Monda:400,700|Noto+Sans" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/home.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
 
   </head>
   <body>
@@ -16,12 +18,12 @@
     <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<br>
+			<header>
 			<h1 class="text-center">
 				How to annotate your Image Classification <br>
 				Dataset at minimum cost?
 			</h1>
-			<br>
+			</header>
 			<div class="alert alert-dismissable alert-info">
 				This website is based on the paper “Towards Good Practices for Efficiently Annotating Large-Scale Image Classification Datasets” accepted by CVPR21 as Oral presentation.
 				For more details, check <a href="https://fidler-lab.github.io/efficient-annotation-cookbook/"><strong>here</strong></a> and <a href="https://github.com/fidler-lab/efficient-annotation-cookbook"><strong>here</strong></a>.
@@ -33,23 +35,27 @@
 				Do you want to spend some money on querying gold standard questions?
 			</p>
 			<h2><i class="fa fa-image"></i>&nbsp Have a glance at your dataset</h2>
-			Now you have an unlabeled dataset of ?? images and you want to hire some workers to help you annotate them.
-			After some extent of data cleaning, you end up with 13 classes of interest and ready to fire the annotation process.<br>
+			<p>
+				Now you have an unlabeled dataset of ?? images and you want to hire some workers to help you annotate them.
+				After some extent of data cleaning, you end up with 13 classes of interest and ready to fire the annotation process.<br>
+			</p>
+			<h4>Here are the classes you have:</h4>
+			<p>			
+				<ul class="animated-link half-highlight">
+					<li>Class1</li>
+					<li>Class2</li>
+					<li>Class3</li>
+					<li>Class4</li>
+					<li>Class5</li>
+					<li>Class6</li>
+					<li>Class7</li>
+				</ul>
+			</p>
 
-			<strong>Here are the classes you have:</strong>
-			<ul>
-				<li>Class1</li>
-				<li>Class2</li>
-				<li>Class3</li>
-				<li>Class4</li>
-				<li>Class5</li>
-				<li>Class6</li>
-				<li>Class7</li>
-			</ul>
 
-			<small>To make this more realistic, we add 10% additional images from other classes as distractin images.</small>
-			<br><br>
-			<div class="carousel slide" id="carousel-749678">
+			<p>To make this more realistic, we add 10% additional images from other classes as distractin images.</p>
+			<br>
+			<div class="carousel slide margin" id="carousel-749678">
 				<ol class="carousel-indicators">
 					<li data-slide-to="0" data-target="#carousel-749678" class="active">
 					</li>
@@ -58,7 +64,7 @@
 					<li data-slide-to="2" data-target="#carousel-749678">
 					</li>
 				</ol>
-				<div class="carousel-inner">
+				<div class="carousel-inner rcorners">
 					<div class="carousel-item active">
 						<img class="d-block w-100" alt="Carousel Bootstrap First" src="https://www.layoutit.com/img/sports-q-c-1600-500-1.jpg">
 					</div>
@@ -87,6 +93,7 @@
 					<option>Crowds: 45, Experts: 5</option>
 					<option>Crowds: 180, Experts: 20</option>
 				</select>
+				
 				</div>
 			</form>
 		</div>
