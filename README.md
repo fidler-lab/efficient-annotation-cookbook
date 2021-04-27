@@ -9,7 +9,7 @@ For more details, please refer to:
 
 University of Toronto 
 
-[[Paper]]() [[Video]]() [[Supplementary]]() [[Project]](https://fidler-lab.github.io/efficient-annotation-cookbook/)
+[[Paper]](https://arxiv.org/abs/2104.12690) [[Video]]() [[Project]](https://fidler-lab.github.io/efficient-annotation-cookbook/)
 
 **CVPR2021 Oral**
 
@@ -59,11 +59,14 @@ python main.py experiment=imagenet_animal learner_method=efficient_annotation si
 
 
 ## Citation
-
 If you use this code, please cite:
-
-TODO: 
-- citation link
-- paper/supp link
-- record video
-- project page
+```
+@misc{liao2021good,
+      title={Towards Good Practices for Efficiently Annotating Large-Scale Image Classification Datasets}, 
+      author={Yuan-Hong Liao and Amlan Kar and Sanja Fidler},
+      year={2021},
+      eprint={2104.12690},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
