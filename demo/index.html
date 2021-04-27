@@ -56,26 +56,26 @@
 
 			<p><small>To make it more realistic, we will add 10% additional images from other classes as distractin images.</small></p>
 			<br>
-			<div class="carousel slide margin" id="carousel-749678">
+			<div class="carousel slide margin" id="carousel-showcase">
 				<ol class="carousel-indicators">
-					<li data-slide-to="0" data-target="#carousel-749678" class="active">
+					<li data-slide-to="0" data-target="#carousel-showcase" class="active">
 					</li>
-					<li data-slide-to="1" data-target="#carousel-749678">
+					<li data-slide-to="1" data-target="#carousel-showcase">
 					</li>
-					<li data-slide-to="2" data-target="#carousel-749678">
+					<li data-slide-to="2" data-target="#carousel-showcase">
 					</li>
 				</ol>
 				<div class="carousel-inner rcorners">
 					<div class="carousel-item active">
-						<img class="d-block w-100" alt="Carousel Bootstrap First" src="https://www.layoutit.com/img/sports-q-c-1600-500-1.jpg">
+						<img class="d-block w-100 h-100" alt="Carousel Bootstrap First" src="https://www.layoutit.com/img/sports-q-c-1600-500-1.jpg">
 					</div>
 					<div class="carousel-item">
-						<img class="d-block w-100" alt="Carousel Bootstrap Second" src="https://www.layoutit.com/img/sports-q-c-1600-500-2.jpg">
+						<img class="d-block w-100 h-100" alt="Carousel Bootstrap Second" src="https://www.layoutit.com/img/sports-q-c-1600-500-2.jpg">
 					</div>
 					<div class="carousel-item">
-						<img class="d-block w-100" alt="Carousel Bootstrap Third" src="https://www.layoutit.com/img/sports-q-c-1600-500-3.jpg">
+						<img class="d-block w-100 h-100" alt="Carousel Bootstrap Third" src="https://www.layoutit.com/img/sports-q-c-1600-500-3.jpg">
 					</div>
-				</div> <a class="carousel-control-prev" href="#carousel-749678" data-slide="prev"><span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#carousel-749678" data-slide="next"><span class="carousel-control-next-icon"></span> <span class="sr-only">Next</span></a>
+				</div> <a class="carousel-control-prev" href="#carousel-showcase" data-slide="prev"><span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#carousel-showcase" data-slide="next"><span class="carousel-control-next-icon"></span> <span class="sr-only">Next</span></a>
 			</div>
 		</div>
 	</div>
@@ -85,7 +85,7 @@
 
 	<br>
 	<div class ="row">
-		<div class="col-md-3">
+		<div class="col-md-5">
 			<form role="form">
 				<div class="form-group">
 				<label for="exampleFormControlSelect2">Number of workers</label>
@@ -98,7 +98,7 @@
 				</div>
 			</form>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-6">
 			<form role="form">
 				<div class="form-group">
 				<label for="exampleFormControlSelect2">Number of Gold Standard Questions (per worker)</label>
@@ -109,6 +109,9 @@
 				</select>
 				</div>
 			</form>
+		</div>
+
+		<div class="col-md-1">
 		</div>
 	</div>
 	
@@ -189,6 +192,11 @@
 	<br>
 	<h2>Results</h2>
 	<div class="row text-center">
+		<br>
+		<div class="col-md-12 d-flex align-items-center">
+			<br>
+			<h4>Performance (compare with ImageNet ground truth)</h4>
+		</div>
 		<div class="col-md-12 d-flex align-items-center">
 			<br>
 			<div class="embed-responsive embed-responsive-16by9">
@@ -196,8 +204,35 @@
 			</div>
 		</div>
 		
+		<div class="col-md-12 d-flex align-items-center">
+			<br>
+			<h4>Your labels:</h4>
+			<br>
+			<br>
+		</div>
+		<div class="carousel slide margin" id="carousel-results">
+			<ol class="carousel-indicators">
+				<li data-slide-to="0" data-target="#carousel-results" class="active">
+				</li>
+				<li data-slide-to="1" data-target="#carousel-results">
+				</li>
+				<li data-slide-to="2" data-target="#carousel-results">
+				</li>
+			</ol>
+			<div class="carousel-inner rcorners">
+				<div class="carousel-item active">
+					<img class="d-block w-100 h-100" alt="Carousel Bootstrap First" src="https://www.layoutit.com/img/sports-q-c-1600-500-1.jpg">
+				</div>
+				<div class="carousel-item">
+					<img class="d-block w-100 h-100" alt="Carousel Bootstrap Second" src="https://www.layoutit.com/img/sports-q-c-1600-500-2.jpg">
+				</div>
+				<div class="carousel-item">
+					<img class="d-block w-100 h-100" alt="Carousel Bootstrap Third" src="https://www.layoutit.com/img/sports-q-c-1600-500-3.jpg">
+				</div>
+			</div> <a class="carousel-control-prev" href="#carousel-results" data-slide="prev"><span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#carousel-results" data-slide="next"><span class="carousel-control-next-icon"></span> <span class="sr-only">Next</span></a>
+		</div>
 	</div>
-			
+
 
 
     <script src="js/jquery.min.js"></script>
