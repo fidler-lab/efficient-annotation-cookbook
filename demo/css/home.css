@@ -1,0 +1,34 @@
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans);
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:400,200,100,300,500,600,800,700,900);
+
+body{
+    line-height: 1.75 !important;
+    margin-left: 200px !important;
+    margin-right: 200px !important;
+}
+
+header {
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
+    padding: 20px;
+    font-family: 'Noto Sans', sans-serif !important;
+}
+
+ h2, h4, p, label{
+    font-family: 'Work Sans'!important;
+}
+
+.rcorners {
+    display: block;
+    border-radius: 15px;  
+    box-shadow: 1px 4px 8px rgba(0,0,0,.15);
+}
+
+.margin{
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.carousel-control-prev-icon{
+    height: 100px;
+    width: 100px;
+}

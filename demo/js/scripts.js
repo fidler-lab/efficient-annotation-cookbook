@@ -27,7 +27,7 @@ $('#run-btn').on('click', function (e) {
     else {
         // Change the src based on variable given
         var parent = $("embed#html-results").parent();
-        var newElement = "<embed id='html-results' type='text/html' src='assets/results/example.html' width=100% height=100%>";
+        var newElement = "<embed id='html-results' type='text/html' src='assets/results/example_plot.html' width=100% height=100%>";
         $("embed#html-results").remove();
         parent.append(newElement);    
     }

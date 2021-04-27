@@ -2476,10 +2476,9 @@ d-appendix d-footnote-list a.footnote-backlink {
       </div>
       </a>
       <div class="btn-container">
-        <div class="ourbutton" onclick="window.open('')">Paper (PDF)</div>
+        <div class="ourbutton" onclick="window.open('https://arxiv.org/abs/2104.12690')">Paper</div>
         <div class="ourbutton" onclick="window.open('https://github.com/fidler-lab/efficient-annotation-cookbook')">Code</div>
         <div class="ourbutton" onclick="window.open('')">Video (TBA)</div>
-        <!--div class="ourbutton" onclick="window.location="#dtbody"">Read â†“</div-->
       </div>
     </body>
   </html>
@@ -2492,7 +2491,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Efficient Annotation Cookbook for Image Classification","description":"Based on the paper \"Towards Good Practices for Efficiently Annotating Large-Scale Image Classification Datasets\", accepted by CVPR21 as Oral presentation.","authors":[{"author":"Yuan-Hong Liao","authorURL":"https://andrewliao11.github.io","affiliation":"University of Toronto, Vector Institute","affiliationURL":"#","orcidID":""},{"author":"Amlan Kar","authorURL":"https://amlankar.github.io","affiliation":"University of Toronto, Vector Institute, Nvidia","affiliationURL":"#","orcidID":""},{"author":"Sanja Fidler","authorURL":"http://www.cs.utoronto.ca/~fidler/","affiliation":"University of Toronto, Vector Institute, Nvidia","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-04-06T00:00:00.000+00:00","citationText":"Liao, et al., 2021"}
+{"title":"Efficient Annotation Cookbook for Image Classification","description":"Based on the paper \"Towards Good Practices for Efficiently Annotating Large-Scale Image Classification Datasets\", accepted by CVPR21 as Oral presentation.","authors":[{"author":"Yuan-Hong Liao","authorURL":"https://andrewliao11.github.io","affiliation":"University of Toronto, Vector Institute","affiliationURL":"#","orcidID":""},{"author":"Amlan Kar","authorURL":"https://amlankar.github.io","affiliation":"University of Toronto, Vector Institute, Nvidia","affiliationURL":"#","orcidID":""},{"author":"Sanja Fidler","authorURL":"http://www.cs.utoronto.ca/~fidler/","affiliation":"University of Toronto, Vector Institute, Nvidia","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-04-26T00:00:00.000+00:00","citationText":"Liao, et al., 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2573,7 +2572,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <p>Data is the engine of modern computer vision, which necessitates collecting large-scale datasets. This is expensive, and guaranteeing the quality of the labels is a major challenge. We investigate <strong>efficient annotation strategies</strong> for collecting multi-class classification labels for a large collection of images.</p>
 <p>In this paper, we show that incorporating machine learner to online labeling coupled with several good design choices, we can increase the annotation efficiency significantly. We end up being <strong>2.7x efficient (w/ 63% less annotations)</strong> w.r.t prior work and <strong>6.7x efficient (w/ 85% less annotations)</strong> w.r.t. manual annotations.</p>
 <aside>
-shout out to <span class="citation" data-cites="Branson_2017_CVPR"><a href="#ref-Branson_2017_CVPR" role="doc-biblioref">Branson, Van Horn, and Perona</a> (<a href="#ref-Branson_2017_CVPR" role="doc-biblioref">2017</a>)</span> that inspires this work.
+Shout out to <span class="citation" data-cites="Branson_2017_CVPR"><a href="#ref-Branson_2017_CVPR" role="doc-biblioref">Branson, Van Horn, and Perona</a> (<a href="#ref-Branson_2017_CVPR" role="doc-biblioref">2017</a>)</span> that inspires this work.
 </aside>
 <h1 id="laborious-annotation-process">Laborious Annotation Process</h1>
 <p>A common approach used in practice is to query humans to get a fixed number of labels per datum and aggregate them <span class="citation" data-cites="lin2014microsoft kaur2019foodx russakovsky2015imagenet">(<a href="#ref-lin2014microsoft" role="doc-biblioref">Lin et al. 2014</a>; <a href="#ref-kaur2019foodx" role="doc-biblioref">Kaur et al. 2019</a>; <a href="#ref-russakovsky2015imagenet" role="doc-biblioref">Russakovsky et al. 2015</a>)</span> presumably because of its simplicity and reliability. This can be prohibitively expensive and inefficient in human resource utilization for large datasets, as it assumes equal effort needed per datum.</p>
@@ -2761,16 +2760,18 @@ Figure 11: Top row: the risk of the aggregated probability and machine learnerâ€
 <p>This webpage is based on Distill Template generated from <a href="https://rstudio.github.io/distill/">here</a></p>
 <h2 class="appendix" id="paper">Paper</h2>
 <div class="layout-chunk" data-layout="l-body-outset">
-<p><img src="assets/thumbnail.png" width="885" /></p>
+<p><a href="https://arxiv.org/abs/2104.12690"><img src="assets/thumbnail.png" width="885" /></a></p>
 </div>
 <p><strong>This paper is accepted to CVPR2021 as Oral presentations.</strong></p>
 <p>If you find this article useful or you use our code, please consider cite:</p>
-<pre><code>@inproceedings{good_practices,
-    title={Towards Good Practices for Efficiently Annotating Large-Scale Image Classification Datasets},
-    author={Yuan-Hong Liao and Amlan Kar and Sanja Fidler},
-    booktitle={CVPR},
-    year={2021}
-    }</code></pre>
+<pre><code>@misc{liao2021good,
+  title={Towards Good Practices for Efficiently Annotating Large-Scale Image Classification Datasets}, 
+  author={Yuan-Hong Liao and Amlan Kar and Sanja Fidler},
+  year={2021},
+  eprint={2104.12690},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV}
+}</code></pre>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
 <div id="ref-Branson_2017_CVPR" class="csl-entry" role="doc-biblioentry">
