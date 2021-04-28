@@ -29,17 +29,17 @@
 				For more details, check the <a href="../index.html"><strong>project website</strong></a> and the <a href="https://github.com/fidler-lab/efficient-annotation-cookbook"><strong>code</strong></a>.
 			</div>
 			<p class="text-left">
-				In this project, we walk you through some of the main steps in annotating an image classification dataset as a task designer who aim at minimizing the costs.
-				We start from a given unlabeled dataset and a set of classes of interests. 
-				You are allowed to choose what kind of workers to hire. 
-				Do you want to spend some money on querying gold standard questions? 
-				Which aggregation method you want to apply?
-				If a CV model is used, how frequent do you want to update it? etc.
+				In this demo, we'll walk you through some key decisions for annotating an image classification dataset as a task designer aiming to minimize cost.
+				We start from a given unlabeled dataset and a set of classes of interest.
+				You are allowed to choose the expertise of workers to hire. 
+				Do you add gold standard questions for annotators? 
+				Which aggregation method do you use?
+				If a vision (henceforth, CV) model is used, how frequently do you update it? etc.
 			</p>
 			<h2><i class="fa fa-image"></i>&nbsp Take a glance at your dataset</h2>
 			<p>
 				Now you have an unlabeled dataset of ?? images and you want to hire some workers to help you annotate the image labels.
-				After some extent of data cleaning, you end up with 13 classes of interest and ready to fire the annotation process. <br>
+				After some data cleaning, you end up with 13 classes of interest and are ready to start annotating. <br>
 			</p>
 			<h4>Here are the classes you have:</h4>
 			<p>			
@@ -54,7 +54,7 @@
 				</ul>
 			</p>
 
-			<p><small>To make it more realistic, we will add 10% additional images from other classes as distractin images.</small></p>
+			<p><small>To make it more realistic, we will add 10% additional images from other classes as distractions.</small></p>
 			<br>
 			<div class="carousel slide margin" id="carousel-showcase">
 				<ol class="carousel-indicators">
@@ -134,7 +134,7 @@
 		<div class="col-md-5">
 			<form role="form">
 				<div class="form-group">
-				<label for="exampleFormControlSelect2">If CV model is used, choose a feature extractor</label>
+				<label for="exampleFormControlSelect2">If a  model is used, choose a feature extractor</label>
 				<select multiple class="form-control" id="select-features">
 					<option>Moco_v2</option>
 					<option>BYOL</option>
@@ -147,7 +147,7 @@
 		<div class="col-md-4">
 			<form role="form">
 				<div class="form-group">
-				<label for="exampleFormControlSelect2">If CV model is used, how frequent do you want to update your model?</label>
+				<label for="exampleFormControlSelect2">If a CV model is used, how frequently do you update it?</label>
 				<select multiple class="form-control" id="select-model_freq">
 					<option>Every 200 annotations</option>
 					<option>Every 1000 annotations</option>
