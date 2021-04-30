@@ -20,6 +20,7 @@ $('#run-btn').on('click', function (e) {
     console.log(features);
 
     plotly_plot(n_workers, n_gold_q, agg, features, model_freq, use_ta, use_early_stop);
+    change_boarder(n_workers, n_gold_q, agg, features, model_freq, use_ta, use_early_stop);
     /*
     if (n_workers.length == 0 || n_gold_q.length == 0 || agg.length == 0){
         msg = 'Some items are empty'
@@ -38,6 +39,10 @@ $('#run-btn').on('click', function (e) {
     }
     */
 })
+
+function change_boarder(n_workers, n_gold_q, agg, features, model_freq, use_ta, use_early_stop) {
+    $('#label-3-7').style="border: 5px solid green"
+}
 
 function _plotly_plot(frames, slider_steps, button_visible=true, max_x=1000){
     var data = [
