@@ -27,3 +27,8 @@ header {
     margin-right: 5%;
     margin-left: 5%;
 }
+
+
+.scrollable-container {
+    overflow-y: auto !important;
+}
