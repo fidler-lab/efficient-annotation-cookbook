@@ -143,8 +143,8 @@ class NNLearner(Learner):
                 raise ValueError
 
             # Include prototypes
-            at_least_one_annotation = np.concatenate([at_least_one_annotation, 
-                                                    np.zeros(n_prototypes).astype(np.bool)])
+            #at_least_one_annotation = np.concatenate([at_least_one_annotation, 
+            #                                        np.zeros(n_prototypes).astype(np.bool)])
             confident_mask = np.concatenate([confident_mask, np.ones(n_prototypes).astype(np.bool)])
             if self.prototype_as_val:
                 train_mask = np.concatenate([train_mask, np.zeros(n_prototypes).astype(np.bool)])
